@@ -1,0 +1,4 @@
+# platformio local workspace
+.pio
+# vscode config for extensions/intellisense
+.vscode

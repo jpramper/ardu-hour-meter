@@ -1,30 +1,40 @@
 // Copyright 2026 Juan Pablo Ramirez
 // SPDX-License-Identifier: MIT
 
-#include "LedControl.h"
+/**
+ * @file main.cpp
+ * @brief Main entrypoint.
+ */
 
-#define adress 0
-LedControl lc = LedControl(11, 13, 10, 1); //(dataPin,clkPin,csPin,numDevices=1) 
-unsigned long delaytime = 250;
+#include "constants.h"
+#include "display.h"
 
-
+/**
+ * @brief One-time hardware and display initialization.
+ */
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
-  lc.shutdown(adress, false);
-  lc.clearDisplay(adress);
 
+  lc.shutdown(DISPLAY_ADDRESS, false);
+  lc.clearDisplay(DISPLAY_ADDRESS);
+
+  // Self-test: light each of the 8 rows one at a time.
   for (int i = 0; i < 8; i++) {
-    lc.setRow(adress, i, B11111111);
-    delay(delaytime);
+    lc.setRow(DISPLAY_ADDRESS, i, B11111111);
+    delay(DELAY_TIME_MS);
   }
-  lc.clearDisplay(adress);
-    delay(delaytime);
+  lc.clearDisplay(DISPLAY_ADDRESS);
+  delay(DELAY_TIME_MS);
 }
 
+/**
+ * @brief Main loop 
+ */
 void loop() {
-  lc.setDigit(adress, 0, 1, false);
-  lc.setChar(adress, 1, '-', false);
-  
+  lc.setDigit(DISPLAY_ADDRESS, 0, 1, false);
+  lc.setChar(DISPLAY_ADDRESS, 1, '-', false);
+
   delay(500);
-  lc.clearDisplay(adress); 
+  lc.clearDisplay(DISPLAY_ADDRESS);
+  
 }

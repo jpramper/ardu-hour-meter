@@ -15,4 +15,10 @@ Also provides a button interrupt to reset counter to 0.
 
 
 ## Local Development Environment Setup
+
 Project is setup for platformio, if on vscode, install platformio extension and init with it.
+
+
+## Design considerations
+
+Time is saved to EEPROM every 15 seconds (defined as SAVE_INTERVAL in constants.h), where seconds and minutes are saved on 60 different addresses each. With a 100k write cycle lifespan, that's 25k hours lifetime for the EEPROM addresses being written.

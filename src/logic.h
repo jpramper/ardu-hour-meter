@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <Arduino.h>
 
 /// 0 - 65535 hours
 extern uint16_t HOURS;

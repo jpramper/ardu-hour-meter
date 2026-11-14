@@ -8,26 +8,7 @@
 
 #pragma once
 
-
-// ===== DISPLAY =================================
-
-/// Arduino pin driving the data (DIN) input.
-constexpr int DATA_PIN = 11;
-
-/// Arduino pin driving the clock (CLK) input.
-constexpr int CLK_PIN = 13;
-
-/// Arduino pin driving the chip select (CS) input.
-constexpr int CS_PIN = 10;
-
-/// Number of MAX7219 devices cascaded.
-constexpr int NUM_DEVICES = 1;
-
-/// Address of the main MAX7219 device on the cascade.
-constexpr int DISPLAY_ADDRESS = 0;
-
-/// Millisecond interval .
-constexpr unsigned long DELAY_TIME_MS = 250;
+#include <Arduino.h>
 
 
 // ===== EEPROM =================================
@@ -61,3 +42,38 @@ constexpr uint8_t MM_ADDR_STRT = 20;
  * This grants 60 addresses for seconds, lowering write cycles to addresses.
  */ 
 constexpr uint8_t SS_ADDR_STRT = 100;
+
+
+// ===== DISPLAY =================================
+
+/// Arduino pin driving the data (DIN) input.
+constexpr int DATA_PIN = 11;
+
+/// Arduino pin driving the clock (CLK) input.
+constexpr int CLK_PIN = 13;
+
+/// Arduino pin driving the chip select (CS) input.
+constexpr int CS_PIN = 10;
+
+/// Number of MAX7219 devices cascaded.
+constexpr int NUM_DEVICES = 1;
+
+/// Address of the main MAX7219 device on the cascade.
+constexpr int DISPLAY_ADDRESS = 0;
+
+/// Segment A where MAX7219 digits are HGFEDCBA
+constexpr byte SEGMENT_A = 0;
+/// Segment B where MAX7219 digits are HGFEDCBA
+constexpr byte SEGMENT_B = 1;
+/// Segment C where MAX7219 digits are HGFEDCBA
+constexpr byte SEGMENT_C = 2;
+/// Segment D where MAX7219 digits are HGFEDCBA
+constexpr byte SEGMENT_D = 3;
+/// Segment E where MAX7219 digits are HGFEDCBA
+constexpr byte SEGMENT_E = 4;
+/// Segment F where MAX7219 digits are HGFEDCBA
+constexpr byte SEGMENT_F = 5;
+/// Segment G where MAX7219 digits are HGFEDCBA
+constexpr byte SEGMENT_G = 6;
+/// Segment H where MAX7219 digits are HGFEDCBA
+constexpr byte SEGMENT_H = 7;

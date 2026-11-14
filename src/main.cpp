@@ -7,6 +7,7 @@
  */
 
 #include "constants.h"
+#include "logic.h"
 #include "display.h"
 
 /**
@@ -15,6 +16,12 @@
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
 
+  initEprom();
+
+  loadTime(HOURS, MINUTES, SECONDS);
+
+  // temp test code
+  // ------------------
   lc.shutdown(DISPLAY_ADDRESS, false);
   lc.clearDisplay(DISPLAY_ADDRESS);
 
@@ -31,10 +38,15 @@ void setup() {
  * @brief Main loop 
  */
 void loop() {
+  delay(1000);
+  
+  tick(HOURS, MINUTES, SECONDS);
+  
+
+
+  // temp test code
+  // ------------------
   lc.setDigit(DISPLAY_ADDRESS, 0, 1, false);
   lc.setChar(DISPLAY_ADDRESS, 1, '-', false);
-
-  delay(500);
   lc.clearDisplay(DISPLAY_ADDRESS);
-  
 }

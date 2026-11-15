@@ -47,13 +47,13 @@ constexpr uint8_t SS_ADDR_STRT = 100;
 // ===== DISPLAY =================================
 
 /// Arduino pin driving the data (DIN) input.
-constexpr int DATA_PIN = 11;
+constexpr int DATA_PIN = 12;
 
 /// Arduino pin driving the clock (CLK) input.
-constexpr int CLK_PIN = 13;
+constexpr int CLK_PIN = 10;
 
 /// Arduino pin driving the chip select (CS) input.
-constexpr int CS_PIN = 10;
+constexpr int CS_PIN = 11;
 
 /// Number of MAX7219 devices cascaded.
 constexpr int NUM_DEVICES = 1;

@@ -20,6 +20,7 @@ void initDisplay () {
 
   lc.shutdown(DISPLAY_ADDRESS, false); // powerup display
   lc.clearDisplay(DISPLAY_ADDRESS);
+  lc.setIntensity(DISPLAY_ADDRESS, 1);
 
   // test all 8 digits one by one, all segments each.
   for (int i = 0; i < 8; i++) { 
@@ -42,7 +43,7 @@ void displayTime (uint16_t hours, uint8_t minutes, uint8_t seconds) {
     minutes > 0 ? ( minutes % 10 ) : 0, 
     false);
   lc.setDigit(DISPLAY_ADDRESS, SEGMENT_B,
-    minutes > 0 ? ( minutes % 100 ) : 0, 
+    minutes >= 10 ? ( (minutes / 10) % 10 ) : 0, 
     false);
 
   if (seconds % 2 == 0) lc.setChar(DISPLAY_ADDRESS, SEGMENT_C, '-', false);
@@ -52,15 +53,15 @@ void displayTime (uint16_t hours, uint8_t minutes, uint8_t seconds) {
     hours > 0 ? (hours % 10) : 0, 
     false);
   lc.setDigit(DISPLAY_ADDRESS, SEGMENT_E, 
-    hours > 10 ? (hours % 100) : 0, 
+    hours > 10 ? ((hours / 10) % 10) : 0, 
     false);
   lc.setDigit(DISPLAY_ADDRESS, SEGMENT_F, 
-    hours > 100 ? (hours % 1000) : 0, 
+    hours > 100 ? ((hours / 100) % 10) : 0, 
     false);
   lc.setDigit(DISPLAY_ADDRESS, SEGMENT_G, 
-    hours > 1000 ? (hours % 10000) : 0, 
+    hours >= 1000 ? ((hours / 1000) % 10) : 0, 
     false);
   lc.setDigit(DISPLAY_ADDRESS, SEGMENT_H, 
-    hours > 10000 ? (hours % 100000) : 0, 
+    hours >= 10000 ? ((hours / 10000) % 10) : 0, 
     false);
 }

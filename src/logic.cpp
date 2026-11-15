@@ -79,8 +79,8 @@ void saveTime (uint16_t hours, uint8_t minutes, uint8_t seconds) {
 }
 
 void tick (uint16_t& hours, uint8_t& minutes, uint8_t& seconds) { 
-  boolean tickMinutes = false;
-  boolean tickHours = false;
+  bool tickMinutes = false;
+  bool tickHours = false;
 
   // tick seconds
   if (++seconds >= 60) {

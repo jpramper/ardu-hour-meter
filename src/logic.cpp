@@ -1,7 +1,7 @@
 // Copyright 2026 Juan Pablo Ramirez
 // SPDX-License-Identifier: MIT
 
-#include <Arduino.h>
+#include <stdint.h>
 #include <EEPROM.h>
 
 #include "logic.h"
@@ -9,13 +9,13 @@
 
 
 /// 0-65535 hours
-uint16_t HOURS = 0;
+volatile uint16_t HOURS = 0;
 
 /// 0-60 minutes
-uint8_t MINUTES = 0;
+volatile uint8_t MINUTES = 0;
 
 /// 0-60 seconds
-uint8_t SECONDS = 0;
+volatile uint8_t SECONDS = 0;
 
 
 namespace {
@@ -48,7 +48,7 @@ namespace {
  * it zeroes all hour/minute/second addresses as well as EEPR_RDY.
  */
 void initEprom () {
-  byte init = EEPROM.read(EEPR_RDY);
+  uint8_t init = EEPROM.read(EEPR_RDY);
 
   if (init != 0) {
     EEPROM.write(EEPR_RDY, 0); // signal EEPROM initialized
@@ -66,8 +66,15 @@ void initEprom () {
   }
 }
 
-void loadTime (uint16_t& hours, uint8_t& minutes, uint8_t& seconds) {
-  EEPROM.get(HH_ADDR, hours);
+void loadTime (
+  volatile uint16_t& hours, 
+  volatile uint8_t& minutes, 
+  volatile uint8_t& seconds
+) {
+  uint16_t hh = 0; // get cannot save to a volatile, must use temp
+  EEPROM.get(HH_ADDR, hh); 
+  hours = hh;
+
   minutes = EEPROM.read(getMinutesAddress(hours));
   seconds = EEPROM.read(getSecondsAddress(minutes));
 }
@@ -78,7 +85,11 @@ void saveTime (uint16_t hours, uint8_t minutes, uint8_t seconds) {
   EEPROM.update(getSecondsAddress(minutes), seconds);
 }
 
-void tick (uint16_t& hours, uint8_t& minutes, uint8_t& seconds) { 
+void tick (
+  volatile uint16_t& hours, 
+  volatile uint8_t& minutes, 
+  volatile uint8_t& seconds
+) { 
   bool tickMinutes = false;
   bool tickHours = false;
 

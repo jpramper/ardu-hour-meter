@@ -8,22 +8,20 @@
 
 #pragma once
 
-#include <Arduino.h>
+#include <stdint.h>
+
 
 /// 0 - 65535 hours
-extern uint16_t HOURS;
+extern volatile uint16_t HOURS;
 
 /// 0 - 60 minutes
-extern uint8_t MINUTES;
+extern volatile uint8_t MINUTES;
 
 /// 0 - 60 seconds
-extern uint8_t SECONDS;
+extern volatile uint8_t SECONDS;
 
 
-/**
- * @brief Zeroes EEPROM adresses defined in constants.h.
- * 
- */
+/// Zeroes EEPROM adresses defined in constants.h.
 void initEprom ();
 
 /**
@@ -33,7 +31,11 @@ void initEprom ();
  * @param [out] minutes Variable to save minutes into.
  * @param [out] seconds Variable to save seconds into.
  */
-void loadTime (uint16_t& hours, uint8_t& minutes, uint8_t& seconds);
+void loadTime (
+  volatile uint16_t& hours, 
+  volatile uint8_t& minutes, 
+  volatile uint8_t& seconds
+);
 
 /**
  * @brief Saves elapsed time from EEPROM to runtime memory.
@@ -53,4 +55,8 @@ void saveTime (uint16_t hh, uint8_t mm, uint8_t ss);
  * @param [out] minutes Variable to save minutes into.
  * @param [out] seconds Variable to save seconds into.
  */
-void tick (uint16_t& hours, uint8_t& minutes, uint8_t& seconds);
+void tick (
+  volatile uint16_t& hours, 
+  volatile uint8_t& minutes, 
+  volatile uint8_t& seconds
+);

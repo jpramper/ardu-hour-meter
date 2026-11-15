@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include <Arduino.h>
+#include <stdint.h>
 
 
 // ===== EEPROM =================================
@@ -62,18 +62,27 @@ constexpr int NUM_DEVICES = 1;
 constexpr int DISPLAY_ADDRESS = 0;
 
 /// Segment A where MAX7219 digits are HGFEDCBA
-constexpr byte SEGMENT_A = 0;
+constexpr uint8_t SEGMENT_A = 0;
 /// Segment B where MAX7219 digits are HGFEDCBA
-constexpr byte SEGMENT_B = 1;
+constexpr uint8_t SEGMENT_B = 1;
 /// Segment C where MAX7219 digits are HGFEDCBA
-constexpr byte SEGMENT_C = 2;
+constexpr uint8_t SEGMENT_C = 2;
 /// Segment D where MAX7219 digits are HGFEDCBA
-constexpr byte SEGMENT_D = 3;
+constexpr uint8_t SEGMENT_D = 3;
 /// Segment E where MAX7219 digits are HGFEDCBA
-constexpr byte SEGMENT_E = 4;
+constexpr uint8_t SEGMENT_E = 4;
 /// Segment F where MAX7219 digits are HGFEDCBA
-constexpr byte SEGMENT_F = 5;
+constexpr uint8_t SEGMENT_F = 5;
 /// Segment G where MAX7219 digits are HGFEDCBA
-constexpr byte SEGMENT_G = 6;
+constexpr uint8_t SEGMENT_G = 6;
 /// Segment H where MAX7219 digits are HGFEDCBA
-constexpr byte SEGMENT_H = 7;
+constexpr uint8_t SEGMENT_H = 7;
+
+
+// ===== BUTTON =================================
+
+/// Arduino pin receiving the button input.
+constexpr int RESET_BUTTON_PIN = 2;
+
+/// Miliseconds to wait before allowing another button interrupt.
+constexpr int BUTTON_DEBOUNCE_DELAY = 200;

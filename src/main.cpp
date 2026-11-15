@@ -8,21 +8,21 @@
 
 #include "logic.h"
 #include "display.h"
+#include "reset.h"
 
-/**
- * @brief One-time hardware and display initialization.
- */
+
+/// One-time hardware and display initialization.
 void setup() {
   initEprom();
 
   loadTime(HOURS, MINUTES, SECONDS);
   
   initDisplay();
+
+  setupButtonInterrupt();
 }
 
-/**
- * @brief Main loop 
- */
+/// Main loop 
 void loop() {
   clearDisplay();
   

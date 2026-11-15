@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include <Arduino.h>
+#include <stdint.h>
 #include <LedControl.h>
 
 
@@ -27,12 +27,19 @@ void clearDisplay ();
  */
 void initDisplay ();
 
-/// Even seconds turn onboard led on, odd seconds off.
+/** Even seconds turn onboard led on, odd seconds off.
+ * 
+ * @param [in] seconds Seconds (0-60)
+ */
 void blinkOnboardLed (uint8_t seconds);
 
 /**
- * Displays received time on MAX7219 display as HHHHH-MM where HHHHH are hours 
- * and MM minutes of current hour. Turns on '-' segment on even seconds, off 
- * in odd seconds.
+ * @brief Displays received time on MAX7219 display as HHHHH-MM where HHHHH 
+ * are hours and MM minutes of current hour. Turns on '-' segment on even 
+ * seconds, off in odd seconds.
+ * 
+ * @param [in] hours Hours (0-65535)
+ * @param [in] minutes Minutes (0-60)
+ * @param [in] seconds Seconds (0-60)
  */
 void displayTime (uint16_t hours, uint8_t minutes, uint8_t seconds);

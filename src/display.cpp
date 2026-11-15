@@ -1,7 +1,7 @@
 // Copyright 2026 Juan Pablo Ramirez
 // SPDX-License-Identifier: MIT
 
-#include <Arduino.h>
+#include <stdint.h>
 #include <LedControl.h>
 
 #include "display.h"

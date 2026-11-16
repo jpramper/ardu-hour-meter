@@ -3,7 +3,7 @@
 
 /**
  * @file main.cpp
- * @brief Main entrypoint.
+ * @brief Main entrypoint for uno platform.
  */
 
 #include "logic.h"
@@ -30,7 +30,7 @@ void loop() {
 
   blinkOnboardLed(SECONDS);
 
-  displayTime(HOURS, MINUTES, SECONDS);
+  displayTime(formatTime(HOURS, MINUTES, SECONDS));
 
   delay(1000);
 }

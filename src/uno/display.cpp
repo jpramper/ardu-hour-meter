@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 #include <stdint.h>
+#include <vector>
 #include <LedControl.h>
 
 #include "display.h"
@@ -38,30 +39,31 @@ void blinkOnboardLed (uint8_t seconds) {
   else digitalWrite(LED_BUILTIN, LOW);
 }
 
-void displayTime (uint16_t hours, uint8_t minutes, uint8_t seconds) {
+void displayTime (std::vector<Segment> segments) {
   lc.setDigit(DISPLAY_ADDRESS, SEGMENT_A, 
-    minutes > 0 ? ( minutes % 10 ) : 0, 
+    segments[0].digit, 
     false);
   lc.setDigit(DISPLAY_ADDRESS, SEGMENT_B,
-    minutes >= 10 ? ( (minutes / 10) % 10 ) : 0, 
+    segments[1].digit, 
     false);
 
-  if (seconds % 2 == 0) lc.setChar(DISPLAY_ADDRESS, SEGMENT_C, '-', false);
-  else lc.setChar(DISPLAY_ADDRESS, SEGMENT_C, ' ', false);
+  lc.setChar(DISPLAY_ADDRESS, SEGMENT_C, 
+    segments[2].character, 
+    false);
   
   lc.setDigit(DISPLAY_ADDRESS, SEGMENT_D, 
-    hours > 0 ? (hours % 10) : 0, 
+    segments[3].digit, 
     false);
   lc.setDigit(DISPLAY_ADDRESS, SEGMENT_E, 
-    hours > 10 ? ((hours / 10) % 10) : 0, 
+    segments[4].digit, 
     false);
   lc.setDigit(DISPLAY_ADDRESS, SEGMENT_F, 
-    hours > 100 ? ((hours / 100) % 10) : 0, 
+    segments[5].digit, 
     false);
   lc.setDigit(DISPLAY_ADDRESS, SEGMENT_G, 
-    hours >= 1000 ? ((hours / 1000) % 10) : 0, 
+    segments[6].digit, 
     false);
   lc.setDigit(DISPLAY_ADDRESS, SEGMENT_H, 
-    hours >= 10000 ? ((hours / 10000) % 10) : 0, 
+    segments[7].digit, 
     false);
 }

@@ -11,8 +11,9 @@ Also provides a button interrupt to reset counter to 0.
 
 - 1x Arduino Nano
 - 1x MAX7219 8-digit (dual 4-digit) 7-segment display
-- 1x button
 - 1x 10uf electrolitic capacitor
+- 1x 0.1 uf ceramic capacitor
+- 1x button
 - 1x 10kohm resistance
 
 

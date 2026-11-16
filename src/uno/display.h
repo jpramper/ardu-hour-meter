@@ -11,6 +11,8 @@
 #include <stdint.h>
 #include <LedControl.h>
 
+#include "format_time.h"
+
 
 // Single MAX7219 display, wired per the pins defined in constants.h.
 extern LedControl lc;
@@ -34,12 +36,6 @@ void initDisplay ();
 void blinkOnboardLed (uint8_t seconds);
 
 /**
- * @brief Displays received time on MAX7219 display as HHHHH-MM where HHHHH 
- * are hours and MM minutes of current hour. Turns on '-' segment on even 
- * seconds, off in odd seconds.
- * 
- * @param [in] hours Hours (0-65535)
- * @param [in] minutes Minutes (0-60)
- * @param [in] seconds Seconds (0-60)
+ * Displays received time on MAX7219 display.
  */
-void displayTime (uint16_t hours, uint8_t minutes, uint8_t seconds);
+void displayTime (std::vector<Segment> segments);

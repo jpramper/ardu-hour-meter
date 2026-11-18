@@ -4,25 +4,32 @@
 #include <Arduino.h>
 
 #include "reset.h"
-#include "constants.h"
-#include "logic.h"
 
 
-volatile unsigned long LAST_TRIGGER = 0;
-
-
-void setupButtonInterrupt () {
-  attachInterrupt(digitalPinToInterrupt(RESET_BUTTON_PIN), buttonInterruptReset, FALLING);
+ResetButton::ResetButton (
+    Time& time_instance, 
+    uint8_t reset_pin, 
+    uint8_t debounce_delay) 
+    : time_(time_instance), 
+    reset_pin_(reset_pin),
+    button_debounce_delay_(debounce_delay) {
+  // attach this instance to the interrupt instance pointer
+  active_interrupt_ = this;
 }
 
-void buttonInterruptReset () {
+void ResetButton::init () {
+  attachInterrupt(digitalPinToInterrupt(reset_pin_), isr, FALLING);
+}
+
+void ResetButton::reset () {
   unsigned long currentTime = millis();
 
-  if (currentTime - LAST_TRIGGER > BUTTON_DEBOUNCE_DELAY) {
-    HOURS = 0;
-    MINUTES = 0;
-    SECONDS = 0;
-    saveTime(HOURS, MINUTES, SECONDS);
-    LAST_TRIGGER = currentTime;
+  if (currentTime - last_trigger_ > button_debounce_delay_) {
+    time_.reset();
+    last_trigger_ = currentTime;
   }
+}
+
+void ResetButton::isr () {
+  active_interrupt_ -> reset();
 }

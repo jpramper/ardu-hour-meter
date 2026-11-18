@@ -6,10 +6,6 @@
 #include "format_time.h"
 
 
-void setUp(void)   {}
-void tearDown(void) {}
-
-
 void test_formatTime_blinks_seconds (void) {
   std::vector<Segment> out(8);
 
@@ -36,12 +32,4 @@ void test_formatTime_splits_digits (void) {
   TEST_ASSERT_EQUAL_INT(2, out[5].digit);
   TEST_ASSERT_EQUAL_INT(1, out[6].digit);
   TEST_ASSERT_EQUAL_INT(0, out[7].digit);
-}
-
-
-int main(int argc, char** argv) {
-  UNITY_BEGIN();
-  RUN_TEST(test_formatTime_blinks_seconds);
-  RUN_TEST(test_formatTime_splits_digits);
-  return UNITY_END();
 }

@@ -1,8 +1,6 @@
 // Copyright 2026 Juan Pablo Ramirez
 // SPDX-License-Identifier: MIT
 
-#pragma once
-
 #include <stdint.h>
 
 #include "time.h"
@@ -53,4 +51,16 @@ void Time::tick () {
 
   // save time every interval
   if (seconds_ % save_interval_ == 0) save();
+}
+
+uint16_t Time::hours () const {
+  return hours_;
+}
+
+uint8_t Time::minutes () const {
+  return minutes_;
+}
+
+uint8_t Time::seconds () const {
+  return seconds_;
 }

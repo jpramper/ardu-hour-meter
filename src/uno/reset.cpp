@@ -33,3 +33,5 @@ void ResetButton::reset () {
 void ResetButton::isr () {
   active_interrupt_ -> reset();
 }
+
+ResetButton* ResetButton::active_interrupt_ = nullptr;

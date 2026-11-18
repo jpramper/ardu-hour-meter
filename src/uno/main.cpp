@@ -6,31 +6,34 @@
  * @brief Main entrypoint for uno platform.
  */
 
-#include "logic.h"
-#include "display.h"
+#include "time.h"
+#include "eeprom.h"
+#include "max7219.h"
 #include "reset.h"
 
+EepromStorage eeprom;
+Max7219Display display;
+Time time(eeprom);
+ResetButton resetButton(time);
 
 /// One-time hardware and display initialization.
 void setup() {
-  initEprom();
+  eeprom.init();
 
-  loadTime(HOURS, MINUTES, SECONDS);
+  time.load();
   
-  initDisplay();
+  display.init();
 
-  setupButtonInterrupt();
+  resetButton.init();
 }
 
 /// Main loop 
 void loop() {
-  clearDisplay();
+  display.clear();
   
-  tick(HOURS, MINUTES, SECONDS);
+  time.tick();
 
-  blinkOnboardLed(SECONDS);
-
-  displayTime(formatTime(HOURS, MINUTES, SECONDS));
+  display.displayTime(time.hours(), time.minutes(), time.seconds());
 
   delay(1000);
 }

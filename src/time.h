@@ -6,9 +6,15 @@
  * @brief Time class.
  */
 
+ #pragma once
+
  #include <stdint.h>
  #include "storage.h"
 
+/**
+ * @class Time
+ * @brief Time-related functionality.
+ */
 class Time {
 public:
   explicit Time (Storage& storage, uint8_t save_interval = 15);
@@ -33,6 +39,13 @@ public:
    * storage EEPROM if the new second matches the save_interval_.
    */
   void tick ();
+
+  /// Returns hours counter.
+  uint16_t hours() const;
+  /// Returns hours counter.
+  uint8_t minutes() const;
+  /// Returns hours counter.
+  uint8_t seconds() const;
 
 private:
   /// Storage implementation for this time instance.

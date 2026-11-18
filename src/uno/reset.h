@@ -35,6 +35,9 @@ private:
   /// Time instance to reset on an interrupt.
   Time& time_;
 
+  /// Arduino pin receiving the button input.
+  uint8_t reset_pin_;
+
   // Miliseconds to wait before allowing another button interrupt.
   uint8_t button_debounce_delay_;
 

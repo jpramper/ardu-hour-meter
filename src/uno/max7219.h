@@ -15,8 +15,8 @@
 
 
 /**
- * @class EepromStorage
- * @brief Implements storage to provide access to Arduino Uno's EEPROM storage.
+ * @class Max7219Display
+ * @brief Implements Display to provide access to a MAX7219 8-digit display.
  */
 class Max7219Display : public Display {
 public:
@@ -40,19 +40,19 @@ private:
   uint8_t display_address_;
 
   /// Segment A where MAX7219 digits are HGFEDCBA
-  const uint8_t SEGMENT_A = 0;
+  static const uint8_t SEGMENT_A = 0;
   /// Segment B where MAX7219 digits are HGFEDCBA
-  const uint8_t SEGMENT_B = 1;
+  static const uint8_t SEGMENT_B = 1;
   /// Segment C where MAX7219 digits are HGFEDCBA
-  const uint8_t SEGMENT_C = 2;
+  static const uint8_t SEGMENT_C = 2;
   /// Segment D where MAX7219 digits are HGFEDCBA
-  const uint8_t SEGMENT_D = 3;
+  static const uint8_t SEGMENT_D = 3;
   /// Segment E where MAX7219 digits are HGFEDCBA
-  const uint8_t SEGMENT_E = 4;
+  static const uint8_t SEGMENT_E = 4;
   /// Segment F where MAX7219 digits are HGFEDCBA
-  const uint8_t SEGMENT_F = 5;
+  static const uint8_t SEGMENT_F = 5;
   /// Segment G where MAX7219 digits are HGFEDCBA
-  const uint8_t SEGMENT_G = 6;
+  static const uint8_t SEGMENT_G = 6;
   /// Segment H where MAX7219 digits are HGFEDCBA
-  const uint8_t SEGMENT_H = 7;
+  static const uint8_t SEGMENT_H = 7;
 };

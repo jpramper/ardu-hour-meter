@@ -27,16 +27,19 @@ public:
   virtual void init () = 0;
 
   /**
-   * @brief Method to clear display contents.
+   * @brief Clear display contents.
    */
   virtual void clear () = 0;
 
   /**
    * @brief Presents the time values on the display.
    * 
-   * @param [out] hours Variable to save hours into.
-   * @param [out] minutes Variable to save minutes into.
-   * @param [out] seconds Variable to save seconds into.
+   * @param [in] hours Hours to display.
+   * @param [in] minutes Minutes to display.
+   * @param [in] seconds Seconds to display.
    */
-  virtual void displayTime (uint16_t hh, uint8_t mm, uint8_t ss) = 0;
+  virtual void displayTime (
+    uint16_t hours, 
+    uint8_t minutes, 
+    uint8_t seconds) = 0;
 };

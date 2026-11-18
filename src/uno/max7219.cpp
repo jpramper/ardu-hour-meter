@@ -1,8 +1,6 @@
 // Copyright 2026 Juan Pablo Ramirez
 // SPDX-License-Identifier: MIT
 
-#pragma once
-
 #include <stdint.h>
 #include <vector>
 #include <LedControl.h>

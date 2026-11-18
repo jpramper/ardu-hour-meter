@@ -12,6 +12,7 @@
 
 #include "storage.h"
 
+
 /**
  * @class EepromStorage
  * @brief Implements storage to provide access to Arduino Uno's EEPROM storage.
@@ -21,10 +22,7 @@ public:
   EepromStorage (
     uint8_t address_hours = 10, 
     uint8_t address_minutes = 20,
-    uint8_t address_seconds = 100) 
-    : address_hours_(address_hours), 
-    address_minutes_(address_minutes), 
-    address_seconds_(address_seconds) {};
+    uint8_t address_seconds = 100);
 
   void init () override;
 

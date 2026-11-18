@@ -39,6 +39,15 @@ namespace {
 }
 
 
+EepromStorage::EepromStorage (
+    uint8_t address_hours, 
+    uint8_t address_minutes,
+    uint8_t address_seconds)
+    : address_hours_(address_hours), 
+    address_minutes_(address_minutes), 
+    address_seconds_(address_seconds) {}
+
+
 /**
  * If eeprom_eady_ address is not written, it zeroes all hour/minute/second 
  * addresses as well as EEPR_RDY.
@@ -62,6 +71,7 @@ void EepromStorage::init () {
   }
 }
 
+
 void EepromStorage::loadTime (
   volatile uint16_t& hours, 
   volatile uint8_t& minutes, 
@@ -74,6 +84,7 @@ void EepromStorage::loadTime (
   minutes = EEPROM.read(getMinutesAddress(address_minutes_, hours));
   seconds = EEPROM.read(getSecondsAddress(address_seconds_, minutes));
 }
+
 
 void EepromStorage::saveTime (uint16_t hours, uint8_t minutes, uint8_t seconds) {
   EEPROM.put(address_hours_, hours);

@@ -27,14 +27,14 @@ public:
   void init () override;
 
   void saveTime (
-    const uint16_t hh, 
-    const uint8_t mm, 
-    const uint8_t ss) override;
+    const uint16_t hours, 
+    const uint8_t minutes, 
+    const uint8_t seconds) override;
 
   void loadTime (
-    volatile uint16_t& hh, 
-    volatile uint8_t& mm, 
-    volatile uint8_t& ss) override;
+    volatile uint16_t& hours, 
+    volatile uint8_t& minutes, 
+    volatile uint8_t& seconds) override;
 
 private:
   /** 

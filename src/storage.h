@@ -34,9 +34,9 @@ public:
    * @param [in] seconds Seconds (0-60)
    */
   virtual void saveTime (
-    const uint16_t hh, 
-    const uint8_t mm, 
-    const uint8_t ss) = 0;
+    const uint16_t hours, 
+    const uint8_t minutes, 
+    const uint8_t seconds) = 0;
 
   /**
    * @brief Retrieves the time values.
@@ -46,7 +46,7 @@ public:
    * @param [out] seconds Variable to save seconds into.
    */
   virtual void loadTime (
-    volatile uint16_t& hh, 
-    volatile uint8_t& mm, 
-    volatile uint8_t& ss) = 0;
+    volatile uint16_t& hours, 
+    volatile uint8_t& minutes, 
+    volatile uint8_t& seconds) = 0;
 };
